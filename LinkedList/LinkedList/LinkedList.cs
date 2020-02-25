@@ -9,7 +9,11 @@ namespace LinkedList
     {
 
         LinkData<T> data;
-
+        public int Count
+        {
+            get;
+            private set;
+        }
         public LinkedList()
         {
 
@@ -17,6 +21,7 @@ namespace LinkedList
 
         public void Push(T value)
         {
+            Count++;
             if (data != null)
             {
                 getLastElement(data).NextElement = new LinkData<T>(value);
@@ -34,7 +39,7 @@ namespace LinkedList
             }
             else if(data.NextElement == null)
             {
-
+                Count--;
                 LinkData<T> last = data;
                 data = null;
 
@@ -42,7 +47,8 @@ namespace LinkedList
             }
             else
             {
-                LinkData<T> beforeLast = getElement(data, Length - 1, 1);
+                Count--;
+                LinkData<T> beforeLast = getElement(data, Count - 1, 1);
 
 
                 LinkData<T> last = beforeLast.NextElement;
@@ -76,7 +82,7 @@ namespace LinkedList
         {
             get
             {
-                if(key >= Length)
+                if(key >= Count)
                 {
                     throw new IndexOutOfRangeException();
                 }
@@ -91,7 +97,7 @@ namespace LinkedList
             }
             set
             {
-                if (key >= Length)
+                if (key >= Count)
                 {
                     throw new IndexOutOfRangeException();
                 }
@@ -119,6 +125,7 @@ namespace LinkedList
             }
         }
 
+        /*
         public int Length
         {
             get
@@ -142,5 +149,6 @@ namespace LinkedList
                 return 1 + cptElement(data.NextElement);
             }
         }
+        */
     }
 }

@@ -18,7 +18,7 @@ namespace LinkedList
 
             Console.WriteLine(list[2]);
 
-            Console.WriteLine(list.Length);
+            Console.WriteLine(list.Count);
 
             Console.ReadKey();
         }
